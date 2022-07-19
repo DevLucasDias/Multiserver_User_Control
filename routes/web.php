@@ -22,7 +22,10 @@ Route::get('/', [LoginController::class, 'Login']);
 
 Route::get('/App/Administration', [LoginController::class, 'UserAdmin']);
 
-Route::get('/Server', [ContentController::class, 'Server']);
-Route::get('/PBXUser', [ContentController::class, 'PBXUser']);
-Route::get('/navbar', [ContentController::class, 'navbar']);
+Route::get('/Content', [ContentController::class, 'Content']);
+
+
+
+
+Route::post('/Acess', [LoginController::class, 'Acess']);
 

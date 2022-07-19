@@ -6,16 +6,12 @@ use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-    public function PBXUser()
+    public function Content()
     {
-        return view('Content/User'); 
+        return view('Content/Content'); 
     }
 
-    public function Server()
-    {
-        return view('Content/Server'); 
-    }
-    
+
     public function navbar()
     {
         return view('Layout/navbar'); 
