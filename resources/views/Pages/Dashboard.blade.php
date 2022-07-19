@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <title></title>
-</head>
-<body>
-    
+<body style="background: lightgrey"> 
+    <br>
+    <div class="container">
+    <table class="striped">
+        <thead>
+          <tr>
+              <th>Client</th>
+              <th>IP</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+          </tr>
+          <tr>
+            <td>Alan</td>
+            <td>Jellybean</td>
+          </tr>
+          <tr>
+            <td>Jonathan</td>
+            <td>Lollipop</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </body>
-</html>
