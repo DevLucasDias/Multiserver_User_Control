@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ContentController;
+use App\Http\Controllers\ShowController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LoginController::class, 'Login']);
+
+Route::get('/App/Administration', [LoginController::class, 'UserAdmin']);
+
+Route::get('/Server', [ContentController::class, 'Server']);
+Route::get('/PBXUser', [ContentController::class, 'PBXUser']);
+Route::get('/navbar', [ContentController::class, 'navbar']);
+
