@@ -7,7 +7,7 @@
             <div class="row ">
                 <div class="col-md-12">
 
-                    <h1>Calma que ainda não existe!!!</h1>
+                    <h1>Bem Vindo</h1>
 
                 </div>
             </div>

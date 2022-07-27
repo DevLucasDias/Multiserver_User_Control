@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ServerConnections extends Model
+class serverconnections extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'course_name',
-        'course_type',
-        'course_area',
+        'organization_name',
+        'ipadress',
         'created_by'
      ];
 }

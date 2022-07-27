@@ -13,7 +13,7 @@ class PabxUsers extends Migration
      */
     public function up()
     {
-        Schema::create('PabxUsers', function (Blueprint $table) {
+        Schema::create('pabxusers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('user')->unique();
@@ -32,6 +32,6 @@ class PabxUsers extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pabxusers');
     }
 }

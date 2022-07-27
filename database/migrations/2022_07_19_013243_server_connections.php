@@ -13,7 +13,7 @@ class ServerConnections extends Migration
      */
     public function up()
     {
-        Schema::create('ServerConnections', function (Blueprint $table) {
+        Schema::create('serverconnections', function (Blueprint $table) {
             $table->increments('id');
             $table->string('organization_name');
             $table->string('ipadress');
@@ -30,6 +30,7 @@ class ServerConnections extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('serverconnections');
+
     }
 }

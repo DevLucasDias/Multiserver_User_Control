@@ -1,40 +1,35 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\PabxUsers;
-
-
+use App\Http\Resources\PabxUsersResource as ResourcesPabxUsersResource;
+use App\Models\serverconnections;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-    public function Content()
+  
+    function ShowDashboard()
     {
-        return view('Content/Content'); 
-    }
-
-
-     function navbar()
-    {
-        return view('Layout/navbar'); 
-    }
-
-    function ShowPabxUsers()
-    {
-    $users = DB::table('pabxusers')->get();
-    return view('Pages/Dashboard')->with('pabxusers', $pabxusers); 
+        $dash = PabxUsers::get();
+        return response()->json($dash);
     }
 
     function ShowServers()
     {
-    $users = DB::table('servers')->get();
-    return view('Pages/Servers')->with('servers', $servers); 
+        $servers = serverconnections::get();
+        return response()->json($servers);
+    }
+
+    function ShowPabxUsers()
+    {
+        $dash = PabxUsers::get();
+        return response()->json($dash);
     }
 
     function ShowAdmin()
     {
-    $users = DB::table('users')->get();
-    return view('Pages/Admin')->with('users', $users); 
     }
 }

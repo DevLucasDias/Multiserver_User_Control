@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf14086919a839fe740e00554e4baff6",
+    "content-hash": "da4ab8fbd248641b055d7d8c054dba1d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2921,6 +2921,121 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "sparkison/laravel-helpers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sparkison/laravel-helpers.git",
+                "reference": "e998318e747d854b328b4004f03f31c276724e6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sparkison/laravel-helpers/zipball/e998318e747d854b328b4004f03f31c276724e6f",
+                "reference": "e998318e747d854b328b4004f03f31c276724e6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "EnsoException": "LaravelEnso\\Helpers\\app\\Exceptions\\EnsoException"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\Helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shaun Parkison",
+                    "email": "hello@brightmindedmedia.com",
+                    "homepage": "https://www.brightmindedmedia.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Helper classes dependency for Laravel Enso",
+            "homepage": "https://github.com/sparkison/laravel-helpers",
+            "keywords": [
+                "bright-minded-media",
+                "helpers"
+            ],
+            "support": {
+                "issues": "https://github.com/sparkison/laravel-helpers/issues",
+                "source": "https://github.com/sparkison/laravel-helpers/tree/master"
+            },
+            "time": "2019-02-11T16:53:33+00:00"
+        },
+        {
+            "name": "sparkison/laravel-vue-datatables",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sparkison/laravel-vue-datatables.git",
+                "reference": "f11a9ce581b20f6fe7a3da95375854900f187e23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sparkison/laravel-vue-datatables/zipball/f11a9ce581b20f6fe7a3da95375854900f187e23",
+                "reference": "f11a9ce581b20f6fe7a3da95375854900f187e23",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.8.*|6.*|7.*|8.*",
+                "php": ">=7.1.0",
+                "sparkison/laravel-helpers": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelEnso\\VueDatatable\\AppServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelEnso\\VueDatatable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shaun Parkison",
+                    "email": "hello@brightmindedmedia.com",
+                    "homepage": "https://www.brightmindedmedia.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Data Table library with server-side processing and a VueJS component",
+            "homepage": "https://github.com/sparkison/laravel-vue-datatables",
+            "keywords": [
+                "bright-minded-media",
+                "data-table",
+                "data-table-server-side",
+                "datatable"
+            ],
+            "support": {
+                "issues": "https://github.com/sparkison/laravel-vue-datatables/issues",
+                "source": "https://github.com/sparkison/laravel-vue-datatables/tree/master"
+            },
+            "time": "2021-03-24T16:14:08+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7973,7 +8088,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "sparkison/laravel-vue-datatables": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

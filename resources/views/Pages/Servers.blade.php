@@ -1,28 +1,15 @@
-<body style="background: blue"> 
-    <br>
-    <div class="container">
-    <table class="striped">
-        <thead>
-          <tr>
-              <th>Server</th>
-              <th>IP</th>
-          </tr>
-        </thead>
+@extends('layout.styles')
+@include('Layout.navname')
+@include('Layout.navbar')
+@section('content')
+   
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+                    <servertable-component></servertable-component>
+                </div>
+            </div>
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
-</body>
+@endsection
+

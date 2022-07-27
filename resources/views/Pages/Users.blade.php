@@ -1,35 +1,14 @@
-<body style="background: pink"> 
-    <br>
-    <div class="container">
-        <div class="row">
-
- 
-    <table class="striped">
-        <thead>
-          <tr>
-              <th>Nome</th>
-              <th>Usuário</th>
-              <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>Ativo</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>Ativo</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>Ativo</td>
-          </tr>
-        </tbody>
-      </table>
+@extends('layout.styles')
+@include('Layout.navname')
+@include('Layout.navbar')
+@section('content')
+    <div >
+        <div class="container" >
+            <div class="row ">
+                <div class="col-md-12">
+                    <pabxusers-component></pabxusers-component>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</body>
+@endsection
