@@ -18,6 +18,9 @@ class PabxUsers extends Migration
             $table->string('name');
             $table->string('user')->unique();
             $table->string('password');
+            $table->string('acess');
+            $table->integer('samu');
+            $table->integer('pj');
             $table->string('created_by');
             $table->timestamps();
 

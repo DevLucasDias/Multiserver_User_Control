@@ -12,6 +12,9 @@ class pabxusers extends Model
         'name',
         'user',
         'password',
-        'created_by'
+        'created_by',
+        'acess',
+        'samu',
+        'pj'
      ];
 }

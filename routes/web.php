@@ -24,13 +24,31 @@ Route::get('/', [LoginController::class, 'Login']);
 
 // Route::get('/App/Administration', [LoginController::class, 'UserAdmin']);
 
-Route::get('/Content', [ContentController::class, 'Content']);
+Route::post('/Acess', [LoginController::class, 'Acess']);
+
+
+//Manipulação de dados
+
+Route::post('/AddDashboard', [ContentController::class, 'AddAdmin']);
+Route::post('/AddServers', [ContentController::class, 'AddServers']);
+Route::post('/AddPabxUsers', [ContentController::class, 'AddPabxUsers']);
+
+Route::get('/InserindoPabxUser', [CallViewController::class, 'addpabxuser']);
+Route::get('/InserindoServers', [CallViewController::class, 'addserver']);
+Route::get('/InserindoAdmin', [CallViewController::class, 'addadmin']);
+
+
+// Fim - Manipulação de dados
+
+
 
 Route::get('/ShowDashboard', [ContentController::class, 'ShowDashboard']);
 Route::get('/ShowServers', [ContentController::class, 'ShowServers']);
 Route::get('/ShowPabxUsers', [ContentController::class, 'ShowPabxUsers']);
 
-Route::post('/Acess', [LoginController::class, 'Acess']);
+
+
+
 
 Route::get('/home', [CallViewController::class, 'Home']);
 Route::get('/pabxusers', [CallViewController::class, 'PabxUsers']);

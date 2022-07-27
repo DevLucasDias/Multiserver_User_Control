@@ -29,4 +29,19 @@ class CallViewController extends Controller
     {
         return view('Pages/Admin'); 
     }
+// _________________________________________________________________________________________________
+    function addserver()
+    {
+        return view('Components/modal-addserver'); 
+    }
+
+    function addpabxuser()
+    {
+        return view('Components/modal-addpabxuser'); 
+    }
+
+    function addadmin()
+    {
+        return view('Components/modal-addpabxuser'); 
+    }
 }
