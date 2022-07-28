@@ -12186,8 +12186,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -12211,6 +12209,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           key: "user",
           title: "Usuário"
         }, {
+          key: "acess",
+          title: "Acesso"
+        }, {
+          key: "pj",
+          title: "Acesso a PJ?"
+        }, {
+          key: "samu",
+          title: "Acesso a Samu?"
+        }, {
           key: "created_by",
           title: "Criador"
         }]
@@ -12223,8 +12230,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       switch (actionName) {
         case 'edit':
-          window.alert("edit");
-          break;
+          window.alert("delete");
 
         case 'delete':
           window.alert("delete");
@@ -12284,7 +12290,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -17777,7 +17782,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\r\n  height:100%;\r\n  width:100%;\n}\nmain {\r\n  padding: 32px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#app {\r\n  font-family: Avenir, Helvetica, Arial, sans-serif;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  text-align: center;\r\n  color: #2c3e50;\r\n  height: 100%;\r\n  width: 100%;\n}\nmain {\r\n  padding: 32px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -36637,8 +36642,6 @@ var render = function () {
       },
     }),
     _vm._v(" "),
-    _c("h1", [_vm._v("Usuarios")]),
-    _vm._v(" "),
     _c(
       "main",
       [
@@ -36689,8 +36692,6 @@ var render = function () {
         crossorigin: "anonymous",
       },
     }),
-    _vm._v(" "),
-    _c("h1", [_vm._v("Servidores")]),
     _vm._v(" "),
     _c(
       "main",

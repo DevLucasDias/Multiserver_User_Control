@@ -3,7 +3,6 @@
   <div id="app">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-      <h1>Servidores</h1>
     <main>
       <data-table v-bind="table_servers" @actionTriggered="handleAction" />
     </main>
@@ -17,8 +16,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height:100%;
-  width:100%;
+  height: 100%;
+  width: 100%;
   ;
 }
 
@@ -39,8 +38,8 @@ export default {
     table_servers() {
       return {
         data: this.serversdata,
-        actionMode: "single", 
-        actions:["edit", "delete"],
+        actionMode: "single",
+        actions: ["edit", "delete"],
         columns: [
           {
             key: "id",
@@ -68,9 +67,9 @@ export default {
 
     handleAction(actionName, data) {
       console.log(actionName, data);
-        switch (actionName) {
+      switch (actionName) {
         case 'edit':
-           window.alert("Edit");
+          window.alert("Edit");
           break;
         case 'delete':
           window.alert("delete");

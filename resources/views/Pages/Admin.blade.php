@@ -1,6 +1,4 @@
 @extends('layout.styles')
-@include('Layout.navname')
-@include('Layout.navbar')
 @section('content')
     <div >
         <div class="container">

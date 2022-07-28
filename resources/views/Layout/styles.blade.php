@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="css/materialize.min.css">
     <script src="js/materialize.js"></script>
     <script src="js/materialize.min.js"></script>
-
+    {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="icons/material-icons.css">
 
 </head>
 
 <body style="background-color: #F7F7F7">
-    <div id="app">
+@include('Layout.navbar')
+    <div id="app" >
         <main class="py-4">
             @yield('content')
         </main>

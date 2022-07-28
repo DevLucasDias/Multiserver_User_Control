@@ -1,12 +1,10 @@
 <template>
-
   <div id="app">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
-    <h1>Usuarios</h1>
     <main>
-     
-        <data-table v-bind="table_servers" @actionTriggered="handleAction"/>
+
+      <data-table v-bind="table_servers" @actionTriggered="handleAction" />
 
     </main>
   </div>
@@ -54,6 +52,18 @@ export default {
             title: "Usuário"
           },
           {
+            key: "acess",
+            title: "Acesso"
+          },
+          {
+            key: "pj",
+            title: "Acesso a PJ?"
+          },
+          {
+            key: "samu",
+            title: "Acesso a Samu?"
+          },
+          {
             key: "created_by",
             title: "Criador"
           },
@@ -69,8 +79,8 @@ export default {
       console.log(actionName, data);
       switch (actionName) {
         case 'edit':
-          window.alert("edit");
-          break;
+          window.alert("delete");
+
         case 'delete':
           window.alert("delete");
           break;

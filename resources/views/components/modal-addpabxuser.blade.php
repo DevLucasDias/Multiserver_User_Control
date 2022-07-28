@@ -2,11 +2,11 @@
 @include('Layout.navname')
 @include('Layout.navbar')
 @section('content')
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-12">
+    <div class="container ">
+        <div class="row col-md-12 card-panel ">
+            <div class="">
                 {{-- Inserir formulario --}}
-                <div class="row card-panel ">
+                <div class="row">
                     <h5>Inserir usuário dos PBX</h5>
                     <form class="col s12" action="/AddPabxUsers" method="post">
                         @csrf
@@ -36,7 +36,7 @@
                                         <p>Clientes PJ</p>
                                         <label>
                                             Não
-                                            <input type="checkbox" id="pj" name="pj">
+                                            <input type="checkbox" id="pj" name="pj" required>
                                             <span class="lever"></span>
                                             Sim
                                         </label>
@@ -54,7 +54,7 @@
                                 <div class="input-field col s6 ">
                                     <h5>Qual acesso?</h5>
                                     <div class="input-field col s12">
-                                        <select id="acesso" name="acesso">
+                                        <select id="acesso" name="acesso" required>
                                             <option value="" disabled selected>Acesso</option>
                                             <option value="root">Root</option>
                                             <option value="admin">Administrador</option>
@@ -67,9 +67,7 @@
 
                         </div>
                         <div class="row">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Adicionar
-                                <i class="material-icons right"></i>
-                            </button>
+                            <button class="btn " type="submit" name="action">Adicionar</button>
                         </div>
                 </div>
                 </form>

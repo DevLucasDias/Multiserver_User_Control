@@ -11,6 +11,8 @@ class serverconnections extends Model
     protected $fillable=[
         'organization_name',
         'ipadress',
+        'usernamesql',
+        'passwordsql',
         'created_by'
      ];
 }

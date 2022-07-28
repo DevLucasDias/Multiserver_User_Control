@@ -11,8 +11,7 @@
 </head>
 
 <body>
-  @include('Layout.navname')
- 
+@include('Layout.navname')
 <br><br>
     <form action="/Acess" method="POST">
       @csrf

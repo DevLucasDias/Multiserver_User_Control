@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-
     function ShowDashboard()
     {
         $dash = PabxUsers::get();
@@ -35,11 +34,6 @@ class ContentController extends Controller
         return response()->json($dash);
     }
 
-    function AddServers(Request $request)
-    {
-        $servers = serverconnections::get();
-        return response()->json($servers);
-    }
 
     function AddPabxUsers(Request $request)
     {
@@ -67,7 +61,7 @@ class ContentController extends Controller
                     'acess' => $request->input('acesso'),
                     'samu' => $request->samu,
                     'pj' => $request->pj,
-                    'created_by' => "Lucas"
+                    'created_by' => "Root"
                 ]
             );
             if ($novo_user) {
@@ -76,6 +70,33 @@ class ContentController extends Controller
                 return back()->with('Falha', 'Tente novamente');
             }
         }
+        return view('Pages/Users'); 
+    }
+
+    
+
+    function AddServers(Request $request)
+    {
+
+        if (DB::table('serverconnections')->where('ipadress', $request->input('ipadress'))->exists()) {
+
+            return back()->with('Existe', 'Já existe este servidor!');
+        }
+
+        if (DB::table('serverconnections')->where('ipadress', $request->input('ipadress'))->doesntExist()) {
+
+            $novo_server = serverconnections::create(
+                [
+                    'organization_name' => $request->input('organization_name'),
+                    'usernamesql' => $request->input('usernamesql'),
+                    'passwordsql' => $request->input('passwordsql'),
+                    'ipadress' => $request->input('ipadress'),
+                    'created_by' => "Root"
+                ]
+            );
+        }
+        return view('Pages/Servers'); 
+            
     }
 
 
