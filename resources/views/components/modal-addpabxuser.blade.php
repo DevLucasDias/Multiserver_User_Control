@@ -1,6 +1,4 @@
 @extends('layout.styles')
-@include('Layout.navname')
-@include('Layout.navbar')
 @section('content')
     <div class="container ">
         <div class="row col-md-12 card-panel ">

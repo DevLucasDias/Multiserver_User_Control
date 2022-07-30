@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\ContentController as ControllersContentController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
 use App\Models\PabxUsers;
 use App\Http\Resources\PabxUsersResource as ResourcesPabxUsersResource;
+use App\Models\pabxusers as ModelsPabxusers;
 use App\Models\serverconnections;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Writer\Ods\Content;
 
 class ContentController extends Controller
 {
@@ -53,7 +57,7 @@ class ContentController extends Controller
         }
         if (DB::table('pabxusers')->where('user', $request->input('username'))->doesntExist()) {
 
-            $novo_user = pabxusers::create(
+            $novo_pabxuser = pabxusers::create(
                 [
                     'name' => $request->input('name'),
                     'user' => $request->input('username'),
@@ -64,13 +68,16 @@ class ContentController extends Controller
                     'created_by' => "Root"
                 ]
             );
-            if ($novo_user) {
-                return back()->with('Sucesso', 'Os dados foram inseridos com sucesso!!');
-            } else {
-                return back()->with('Falha', 'Tente novamente');
-            }
+            // if ($novo_pabxuser) {
+            //     return back()->with('Sucesso', 'Os dados foram inseridos com sucesso!!');
+            // } else {
+            //     return back()->with('Falha', 'Tente novamente');
+            // }
+            
         }
-        return view('Pages/Users'); 
+        $this->AddUserToVariousServers($novo_pabxuser);
+
+         return view('Pages/Users'); 
     }
 
     
@@ -91,19 +98,74 @@ class ContentController extends Controller
                     'usernamesql' => $request->input('usernamesql'),
                     'passwordsql' => $request->input('passwordsql'),
                     'ipadress' => $request->input('ipadress'),
+                    'databasename' => $request->input('databasename'),
                     'created_by' => "Root"
                 ]
             );
         }
+        $this->AddUsersToNewServer($novo_server);
+
         return view('Pages/Servers'); 
-            
     }
 
 
 
-    function AddAdmin(Request $request)
+    public function AddUserToVariousServers($request)
     {
-        $dash = PabxUsers::get();
-        return response()->json($dash);
+        $serverconn = serverconnections::get();
+        foreach ($serverconn as $serverconnection){
+
+            DB::disconnect('mysql');
+            Config::set("database.connections.dynamic", [
+                'driver' => 'mysql',
+                "host" => $serverconnection->ipadress,
+                'port' => '3306',
+                "database" =>$serverconnection->databasename,
+                "username" =>$serverconnection->usernamesql,
+                "password" => $serverconnection->passwordsql
+            ]);
+            // dd($dado);
+             $returnselect = DB::connection('dynamic')->table('user')->insert(
+                [
+                    'name' => $request->name,
+                    'user' => $request->user,
+                    'password' => $request->password,
+                    'status' => 1,
+                    'acess' => $request->acess
+                ]); 
+                 
+        }
+        return; 
     }
+
+    public function AddUsersToNewServer($request)
+    {
+        $pabxusers = PabxUsers::get();
+        foreach ($pabxusers as $pabxuserss){
+
+            DB::disconnect('mysql');
+            Config::set("database.connections.dynamic", [
+                'driver' => 'mysql',
+                "host" => $request->ipadress,
+                'port' => '3306',
+                "database" =>$request->databasename,
+                "username" =>$request->usernamesql,
+                "password" => $request->passwordsql
+            ]);
+            // dd($dado);
+             $returnselect = DB::connection('dynamic')->table('user')->insert(
+                [
+                    'name' => $pabxuserss->name,
+                    'user' => $pabxuserss->user,
+                    'password' => $pabxuserss->password,
+                    'status' => 1,
+                    'acess' => $pabxuserss->acess
+                ]); 
+                 
+        }
+        return; 
+    }
+    
+
+
 }

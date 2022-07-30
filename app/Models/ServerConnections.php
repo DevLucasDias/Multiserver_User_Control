@@ -13,6 +13,7 @@ class serverconnections extends Model
         'ipadress',
         'usernamesql',
         'passwordsql',
+        'databasename',
         'created_by'
      ];
 }

@@ -10,9 +10,13 @@
                         @csrf
                         <div class="row">
                             <div class="row ">
-                                <div class="input-field col s12">
+                                <div class="input-field col s8">
                                     <input id="organization_name" name="organization_name" type="text" class="validate" required>
                                     <label for="organization_name">Nome do Cliente</label>
+                                </div>
+                                <div class="input-field col s4">
+                                    <input id="databasename" name="databasename" type="text" class="validate" required>
+                                    <label for="databasename">Nome do Banco</label>
                                 </div>
                             </div>
                             <div class="row">
