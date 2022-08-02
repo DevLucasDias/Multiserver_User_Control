@@ -115,58 +115,57 @@ class ContentController extends Controller
     public function AddUserToVariousServers($request)
     {
         $serverconn = serverconnections::get();
-        foreach ($serverconn as $serverconnection){
+        foreach ($serverconn as $serverconn){
 
-            return Http::get(url('http://localhost:9000/api/users'))->json();
-
-
-
-
-
-
-
-
-
-            // DB::disconnect('mysql');
-            // Config::set("database.connections.dynamic", [
-            //     'driver' => 'mysql',
-            //     "host" => $serverconnection->ipadress,
-            //     'port' => '3306',
-            //     "database" =>$serverconnection->databasename,
-            //     "username" =>$serverconnection->usernamesql,
-            //     "password" => $serverconnection->passwordsql
-            // ]);
-            // // dd($dado);
-            //  $returnselect = DB::connection('dynamic')->table('user')->insert(
-            //     [
-            //         'name' => $request->name,
-            //         'user' => $request->user,
-            //         'password' => $request->password,
-            //         'status' => 1,
-            //         'acess' => $request->acess
-            //     ]); 
-                 
-        }
+            if($request->acess == 'root')
+            $request->acess = 0;        
+            elseif($request->acess == 'admin' ){
+                $request->acess = 1;   
+            }elseif($request->acess == 'supervisor'){
+                $request->acess = 2;   
+            }
+             $response = Http::post("http://{$serverconn->ipadress}:9000/api/users/", [
+                'loginname' => $request->name,
+                'username' => $request->user,
+                'password' => $request->password,
+                'userstatus' => 1,
+                'permission' => $request->acess
+            ]);
+    
+            };
         return; 
     }
 
 
 
-    public function AddUsersToNewServer($request)
+    public function AddUsersToNewServer($serverconn)
     {
-        // $usuarios = ("http://{$request->ipadress}:9000/api/users");
-        //  $resultado = HTTP::get("http://{$request->ipadress}:9000/api/users");
+        $pabxusers = PabxUsers::get();
+        foreach ($pabxusers as $pabxusersinstance){
 
-        $usuarios = HTTP::get("https://jsonplaceholder.typicode.com/todos/");
-        $arrayusuarios = $usuarios->json();
-        print_r($arrayusuarios);
+        if($pabxusersinstance->acess == 'root')
+        $pabxusersinstance->acess = 0;        
+        elseif($pabxusersinstance->acess == 'admin' ){
+            $pabxusersinstance->acess = 1;   
+        }elseif($pabxusersinstance->acess == 'supervisor'){
+            $pabxusersinstance->acess = 2;   
+        }
+         $response = Http::post("http://{$serverconn->ipadress}:9000/api/users/", [
+            'loginname' => $pabxusersinstance->name,
+            'username' => $pabxusersinstance->user,
+            'password' => $pabxusersinstance->password,
+            'userstatus' => 1,
+            'permission' => $pabxusersinstance->acess
+        ]);
+
+        };
 
 
 
 
     }
 
-    public function AddUsersToNewServerlocalhosr($request)
+    public function AddUsersToNewServerlocalhost($request)
     {
         $pabxusers = PabxUsers::get();
         foreach ($pabxusers as $pabxuserss){
@@ -188,6 +187,34 @@ class ContentController extends Controller
                     'password' => $pabxuserss->password,
                     'status' => 1,
                     'acess' => $pabxuserss->acess
+                ]); 
+                 
+        }
+        return; 
+    }
+
+    public function AddUserToVariousServerslocalhost($request)
+    {
+        $serverconn = serverconnections::get();
+        foreach ($serverconn as $serverconnection){
+
+            DB::disconnect('mysql');
+            Config::set("database.connections.dynamic", [
+                'driver' => 'mysql',
+                "host" => $serverconnection->ipadress,
+                'port' => '3306',
+                "database" =>$serverconnection->databasename,
+                "username" =>$serverconnection->usernamesql,
+                "password" => $serverconnection->passwordsql
+            ]);
+            // dd($dado);
+             $returnselect = DB::connection('dynamic')->table('user')->insert(
+                [
+                    'name' => $request->name,
+                    'user' => $request->user,
+                    'password' => $request->password,
+                    'status' => 1,
+                    'acess' => $request->acess
                 ]); 
                  
         }
