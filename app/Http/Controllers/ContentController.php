@@ -175,7 +175,7 @@ class ContentController extends Controller
     public function AddUsersToNewServerSamu($serverconn)
     {
         $pabxusers = PabxUsers::where('samu', 1)->get();
-        // $pabxusers = PabxUsers::get();
+        
         foreach ($pabxusers as $pabxusersinstance) {
 
             if ($pabxusersinstance->acess == 'root')
