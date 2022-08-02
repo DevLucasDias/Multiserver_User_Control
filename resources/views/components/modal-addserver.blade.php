@@ -2,7 +2,8 @@
 @include('Layout.navname')
 @include('Layout.navbar')
 @section('content')
-
+<div id="modal1" class="modal col s7">
+    <div class="modal-content">
                 {{-- Inserir formulario --}}
                 <div class="row">
                     <h5>Inserir Servidores</h5>
@@ -26,7 +27,7 @@
                                     <label for="usernamesql">Usuário</label>
                                 </div>
                                 <div class="input-field col s4">
-                                    <input id="passwordsql" name="passwordsql" type="password" class="validate" required>
+                                    <input id="passwordsql" name="passwordsql" type="password" class="validate" >
                                     <label for="passwordsql">Senha</label>
                                 </div>
                                 <div class="input-field col s4">
@@ -43,11 +44,17 @@
                     </form>
                 </div>
                 {{--  --}}
-
+    </div>
+            </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
             M.FormSelect.init(elems);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            M.Modal.init(elems);
         });
     </script>
 @endsection

@@ -38,9 +38,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.config.productionTip = false;
 
-
  Vue.component('pabxusers-component', require('./components/PabxUserComponent.vue').default);
  Vue.component('servertable-component', require('./components/ServersComponent.vue').default);
+ Vue.component('ModalEdit', require('./components/ModalEdit.vue').default);
+
 
 
 

@@ -18,8 +18,9 @@ class ServerConnections extends Migration
             $table->string('organization_name');
             $table->string('usernamesql');
             $table->string('passwordsql')->nullable();
-            $table->string('ipadress');
-            $table->string('databasename');            
+            $table->ipAddress('ipadress');
+            $table->string('databasename');       
+            $table->string('typeofclient');                 
             $table->string('created_by');
             $table->timestamps();
 

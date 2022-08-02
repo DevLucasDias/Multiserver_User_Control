@@ -14,7 +14,7 @@ class PabxUsers extends Migration
     public function up()
     {
         Schema::create('pabxusers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->string('user')->unique();
             $table->string('password');

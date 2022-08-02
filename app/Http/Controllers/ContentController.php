@@ -11,6 +11,7 @@ use App\Models\pabxusers as ModelsPabxusers;
 use App\Models\serverconnections;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Writer\Ods\Content;
+use Illuminate\Support\Facades\http;
 
 class ContentController extends Controller
 {
@@ -99,6 +100,7 @@ class ContentController extends Controller
                     'passwordsql' => $request->input('passwordsql'),
                     'ipadress' => $request->input('ipadress'),
                     'databasename' => $request->input('databasename'),
+                    'typeofclient' => $request->input('typeofclient'),
                     'created_by' => "Root"
                 ]
             );
@@ -115,30 +117,56 @@ class ContentController extends Controller
         $serverconn = serverconnections::get();
         foreach ($serverconn as $serverconnection){
 
-            DB::disconnect('mysql');
-            Config::set("database.connections.dynamic", [
-                'driver' => 'mysql',
-                "host" => $serverconnection->ipadress,
-                'port' => '3306',
-                "database" =>$serverconnection->databasename,
-                "username" =>$serverconnection->usernamesql,
-                "password" => $serverconnection->passwordsql
-            ]);
-            // dd($dado);
-             $returnselect = DB::connection('dynamic')->table('user')->insert(
-                [
-                    'name' => $request->name,
-                    'user' => $request->user,
-                    'password' => $request->password,
-                    'status' => 1,
-                    'acess' => $request->acess
-                ]); 
+            return Http::get(url('http://localhost:9000/api/users'))->json();
+
+
+
+
+
+
+
+
+
+            // DB::disconnect('mysql');
+            // Config::set("database.connections.dynamic", [
+            //     'driver' => 'mysql',
+            //     "host" => $serverconnection->ipadress,
+            //     'port' => '3306',
+            //     "database" =>$serverconnection->databasename,
+            //     "username" =>$serverconnection->usernamesql,
+            //     "password" => $serverconnection->passwordsql
+            // ]);
+            // // dd($dado);
+            //  $returnselect = DB::connection('dynamic')->table('user')->insert(
+            //     [
+            //         'name' => $request->name,
+            //         'user' => $request->user,
+            //         'password' => $request->password,
+            //         'status' => 1,
+            //         'acess' => $request->acess
+            //     ]); 
                  
         }
         return; 
     }
 
+
+
     public function AddUsersToNewServer($request)
+    {
+        // $usuarios = ("http://{$request->ipadress}:9000/api/users");
+        //  $resultado = HTTP::get("http://{$request->ipadress}:9000/api/users");
+
+        $usuarios = HTTP::get("https://jsonplaceholder.typicode.com/todos/");
+        $arrayusuarios = $usuarios->json();
+        print_r($arrayusuarios);
+
+
+
+
+    }
+
+    public function AddUsersToNewServerlocalhosr($request)
     {
         $pabxusers = PabxUsers::get();
         foreach ($pabxusers as $pabxuserss){

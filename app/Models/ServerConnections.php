@@ -14,6 +14,7 @@ class serverconnections extends Model
         'usernamesql',
         'passwordsql',
         'databasename',
+        'typeofclient',
         'created_by'
      ];
 }

@@ -3,7 +3,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
     <main>
-
+      <component1 ref='ModalEdit'></component1>
       <data-table v-bind="table_servers" @actionTriggered="handleAction" />
 
     </main>
@@ -25,6 +25,7 @@ main {
 </style>
 
 <script>
+import ModalEditVue from './ModalEdit.vue';
 
 export default {
   data() {
@@ -72,19 +73,16 @@ export default {
     },
   },
 
+  components: ModalEditVue,
+
   methods: {
+
 
 
     handleAction(actionName, data) {
       console.log(actionName, data);
-      switch (actionName) {
-        case 'edit':
-          window.alert("delete");
-
-        case 'delete':
-          window.alert("delete");
-          break;
-      }
+     if(actionName == 'edit')
+      console.log('edit');
     },
     showServers: async function () {
 
