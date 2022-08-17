@@ -17,6 +17,7 @@ class UserFactory extends Factory
         return [
             'name' => 'Lucas',
             'email' => 'lucasrafa2008@gmail.com',
+            'username' => 'lucas.dias',
             'email_verified_at' => now(),
             'password' => '123456', // password
             'created_by' => 'root',

@@ -19,13 +19,13 @@ class LoginController extends Controller
     {
 
         $dados = $request->validate([
-        'email' => 'required' , 'email',
+        'username' => 'required',
         'password' => 'required',
         ]);
-        $autenticacao = array('email' => $dados['email'], 'password' => $dados['password']);
-        if (Auth::attempt($dados)) {
+        $autenticacao = array('username' => $dados['username'], 'password' => $dados['password']);
+        if (Auth::attempt($autenticacao)) {
             $request->session()->regenerate();
- 
+
             return redirect()->intended('home');
         }else{
             return back()->withErrors([

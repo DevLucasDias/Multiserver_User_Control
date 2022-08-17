@@ -26,7 +26,7 @@
                     <div class="card-content">
                         <div class="form-field">
                             <label for="email">Usuário</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="text" id="username" name="username" required>
                         </div><br>
 
                         <div class="form-field">

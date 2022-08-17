@@ -27,7 +27,7 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/pabxusers', [CallViewController::class, 'PabxUsers'])->name('pabxusers');
 
-//Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     
     Route::get('/home', [CallViewController::class, 'Home'])->name('home');
     Route::get('/pabxusers', [CallViewController::class, 'PabxUsers'])->name('pabxusers');
@@ -54,7 +54,7 @@ Route::get('/pabxusers', [CallViewController::class, 'PabxUsers'])->name('pabxus
     Route::get('/ShowServers', [ContentController::class, 'ShowServers']);
     Route::get('/ShowPabxUsers', [ContentController::class, 'ShowPabxUsers']);
 
-//});
+});
 
 
 
