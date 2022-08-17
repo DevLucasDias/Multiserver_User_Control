@@ -7,11 +7,13 @@
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
+        "genealabs/laravel-caffeine": "^9.0",
         "guzzlehttp/guzzle": "^7.4",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "livewire/livewire": "^2.10",
         "sparkison/laravel-vue-datatables": "dev-master"
     },
     "require-dev": {

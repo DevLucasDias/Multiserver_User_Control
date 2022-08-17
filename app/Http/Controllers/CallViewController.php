@@ -22,26 +22,12 @@ class CallViewController extends Controller
 
     function PabxUsers()
     {
-        return view('Pages/Users'); 
+        return view('Pages/PabxUsers'); 
     }
 
     function Admin()
     {
         return view('Pages/Admin'); 
     }
-// _________________________________________________________________________________________________
-    function addserver()
-    {
-        return view('Components/modal-addserver'); 
-    }
 
-    function addpabxuser()
-    {
-        return view('Components/modal-addpabxuser'); 
-    }
-
-    function addadmin()
-    {
-        return view('Components/modal-addpabxuser'); 
-    }
 }

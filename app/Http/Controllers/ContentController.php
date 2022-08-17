@@ -11,36 +11,12 @@ use App\Models\pabxusers as ModelsPabxusers;
 use App\Models\serverconnections;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Writer\Ods\Content;
-use Illuminate\Support\Facades\http;
+use Illuminate\Support\Facades\Http;
 
 class ContentController extends Controller
 {
-    function ShowDashboard()
-    {
-        $dash = PabxUsers::get();
-        return response()->json($dash);
-    }
-
-    function ShowServers()
-    {
-        $servers = serverconnections::get();
-        return response()->json($servers);
-    }
-
-    function ShowPabxUsers()
-    {
-        $PabxUser = PabxUsers::get();
-        return response()->json($PabxUser);
-    }
-
-    function ShowAdmin()
-    {
-        $dash = PabxUsers::get();
-        return response()->json($dash);
-    }
-
-
-    function AddPabxUsers(Request $request)
+    
+    public function AddPabxUsers(Request $request)
     {
         if (DB::table('pabxusers')->where('user', $request->input('username'))->exists()) {
 
@@ -87,7 +63,7 @@ class ContentController extends Controller
         return view('Pages/Users');
     }
 
-    function AddServers(Request $request)
+    public function AddServers(Request $request)
     {
         if (DB::table('serverconnections')->where('ipadress', $request->input('ipadress'))->exists()) {
 
