@@ -1,4 +1,5 @@
-
+<div>
+   
 <div>
     <div class="row">
         <div class="col s10">
@@ -18,28 +19,29 @@
         <div class="col s1">
             <button class="waves-effect waves-light btn blue"><i class="fa fa-circle-plus" aria-hidden="true"></i></button>
         </div>
+
+        <livewire:adiciona-servidores>
+
     </div>
                     <table>
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nome</th>
-                                <th>Usuário</th>
-                                <th>Senha</th>
+                                <th>Endereço de IP</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($pabxusuarios ?? '' as $data)
+                            @foreach ($serverconnections as $data)
                             <tr>
                                 <td>{{ $data->id }}</td>
-                                <td>{{ $data->name }}</td>
-                                <td>{{ $data->user }}</td>
-                                <td>{{ $data->password }}</td>
+                                <td>{{ $data->organization_name }}</td>
+                                <td>{{ $data->ipadress }}</td>
                                 <td> <button class="waves-effect waves-light btn red"
                                         onclick="confirm('Tem Certeza que quer apagar este Produto?') || event.stopImmediatePropagation()"
-                                        wire:click="deleteUnicoUsuario('{{ $data->id }}')"><i
+                                        wire:click="deleteUnicoCliente('{{ $data->id }}')"><i
                                             class="fa fa-trash" aria-hidden="true"></i></button>
                                     <button class="waves-effect waves-light btn green"><i class="fa fa-pen-to-square" aria-hidden="true"></i></button>
                                 </td>
@@ -48,7 +50,8 @@
                         </tbody>
 
                     </table>
-                    {{ $pabxusuarios ?? ''->links() }}
+                    {{ $serverconnections->links() }}
 
 
+</div>
 </div>

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use \Illuminate\Foundation\Auth\AuthenticatesUsers; 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class LoginController extends Controller
@@ -17,26 +18,31 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-
         $dados = $request->validate([
         'username' => 'required',
         'password' => 'required',
         ]);
-        $autenticacao = array('username' => $dados['username'], 'password' => $dados['password']);
-        if (Auth::attempt($autenticacao)) {
-            $request->session()->regenerate();
 
-            return redirect()->intended('home');
+        if(Auth::attempt($dados)) 
+        {
+            $request->session()->regenerate();
+            return redirect()->route('home');
         }else{
             return back()->withErrors([
-                'email' => 'Usuário ou senha incorretos!!!',
-            ])->onlyInput('email');
+                'error' => 'Usuário ou senha incorretos!!!',
+            ])->onlyInput('error');
         }
-        
-        
-        
-       
-
    
     }
+
+    public function logout(Request $request)
+{
+    Auth::logout();
+ 
+    $request->session()->invalidate();
+ 
+    $request->session()->regenerateToken();
+ 
+    return redirect('/');
+}
 }

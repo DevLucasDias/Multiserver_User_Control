@@ -5,18 +5,10 @@
             <div class="row card-panel">
                 <div class="col-md-12">
 
-                    <h1>Bem Vindo</h1>
-
-
-                    <input type="text" class="form-input" id="ipv4" name="ipv4" placeholder="192.168.0.1" />
-                    <script>
-                        var ipv4_address = $('#ipv4');
-                        ipv4_address.inputmask({
-                            alias: "ip",
-                            greedy: false //The initial mask shown will be "" instead of "-____".
-                        });
-                    </script>
-
+                    <h1>Bem Vindo(a)</h1>
+                    <p>
+                        Sistema de gerenciamento de usuários de varios servidores. Utilizando-se de uma api, criada tambem por mim, para um controle de varios servidores e liberações.
+                    </p>
                 </div>
             </div>
         </div>

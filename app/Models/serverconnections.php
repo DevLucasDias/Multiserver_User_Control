@@ -17,4 +17,14 @@ class serverconnections extends Model
         'typeofclient',
         'created_by'
      ];
+
+     public function scopeProcurar($query, $termo)
+     {
+        $termo =  "%$termo%";
+        $query->where(function($query) use ($termo){
+         $query->where('organization_name', 'like', $termo)
+         ->orWhere('ipadress','like', $termo);
+        });
+         
+     }
 }

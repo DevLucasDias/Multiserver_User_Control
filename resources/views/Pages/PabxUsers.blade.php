@@ -6,16 +6,18 @@
         </div>
     </div>
 
-    @livewireScripts
-    <script>
-        window.addEventListener('recarregaPagina', event => {
-  document.location.reload(true);
+
+@endsection
+@section('scripts')
+<script>
+    window.addEventListener('recarregaPagina', event => {
+document.location.reload(true);
 })
 
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    M.FormSelect.init(elems);
-  });
-   </script>
+var elems = document.querySelectorAll('select');
+M.FormSelect.init(elems);
+});
+</script>  
 @endsection
 
