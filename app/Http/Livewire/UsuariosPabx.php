@@ -29,7 +29,7 @@ class UsuariosPabx extends Component
     public function render()
     {
         return view('livewire.usuarios-pabx', [
-            'pabxusuarios' => pabxusers::procurar(trim($this->search))->simplePaginate($this->paginate),
+            'pabxusuarios' => pabxusers::procurar(trim($this->search))->Paginate($this->paginate),
         ]);
     }
 }

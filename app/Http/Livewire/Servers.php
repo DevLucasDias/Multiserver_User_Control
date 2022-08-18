@@ -25,7 +25,7 @@ class Servers extends Component
     public function render()
     {
         return view('livewire.servers', [
-            'serverconnections' => serverconnections::procurar(trim($this->search))->simplePaginate($this->paginate),
+            'serverconnections' => serverconnections::procurar(trim($this->search))->Paginate($this->paginate),
         ]);
     }
 }

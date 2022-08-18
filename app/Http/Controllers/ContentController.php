@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\ContentController as ControllersContentController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
-use App\Models\PabxUsers;
 use App\Http\Resources\PabxUsersResource as ResourcesPabxUsersResource;
-use App\Models\pabxusers as ModelsPabxusers;
+use App\Models\pabxusers;
 use App\Models\serverconnections;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Writer\Ods\Content;
@@ -60,24 +59,22 @@ class ContentController extends Controller
             $this->AddUserToVariousServersSamu($novo_pabxuser);
         }
 
-        return view('Pages/Users');
+        return redirect()->route('pabxusers');
     }
 
     public function AddServers(Request $request)
     {
-        if (DB::table('serverconnections')->where('ipadress', $request->input('ipadress'))->exists()) {
+        if (DB::table('serverconnections')->where('apiaddress', $request->input('apiaddress'))->exists()) {
 
             return back()->with('Existe', 'Já existe este servidor!');
         }
-        if (DB::table('serverconnections')->where('ipadress', $request->input('ipadress'))->doesntExist()) {
+        if (DB::table('serverconnections')->where('apiaddress', $request->input('apiaddress'))->doesntExist()) {
 
             $novo_server = serverconnections::create(
                 [
                     'organization_name' => $request->input('organization_name'),
-                    'usernamesql' => $request->input('usernamesql'),
-                    'passwordsql' => $request->input('passwordsql'),
-                    'ipadress' => $request->input('ipadress'),
-                    'databasename' => $request->input('databasename'),
+                    'token' => $request->input('token'),
+                    'apiaddress' => $request->input('apiaddress'),
                     'typeofclient' => $request->input('typeofclient'),
                     'created_by' => "Root"
                 ]
@@ -91,7 +88,7 @@ class ContentController extends Controller
         }
 
 
-        return view('Pages/Servers');
+        return redirect()->route('servers');
     }
 
 
@@ -110,7 +107,7 @@ class ContentController extends Controller
             } elseif ($request->acess == 'supervisor') {
                 $request->acess = 2;
             }
-            $response = Http::post("http://{$serverconn->ipadress}:9000/api/users/", [
+            $response = Http::post($serverconn->apiaddress, [
                 'loginname' => $request->name,
                 'username' => $request->user,
                 'password' => $request->password,
@@ -135,7 +132,7 @@ class ContentController extends Controller
             } elseif ($request->acess == 'supervisor') {
                 $request->acess = 2;
             }
-            $response = Http::post("http://{$serverconn->ipadress}:9000/api/users/", [
+            $response = Http::post($serverconn->apiaddress, [
                 'loginname' => $request->name,
                 'username' => $request->user,
                 'password' => $request->password,
@@ -150,7 +147,7 @@ class ContentController extends Controller
 
     public function AddUsersToNewServerSamu($serverconn)
     {
-        $pabxusers = PabxUsers::where('samu', 1)->get();
+        $pabxusers = pabxusers::where('samu', 1)->get();
         
         foreach ($pabxusers as $pabxusersinstance) {
 
@@ -161,7 +158,7 @@ class ContentController extends Controller
             } elseif ($pabxusersinstance->acess == 'supervisor') {
                 $pabxusersinstance->acess = 2;
             }
-            $response = Http::post("http://{$serverconn->ipadress}:9000/api/users/", [
+            $response = Http::post($serverconn->apiaddress, [
                 'loginname' => $pabxusersinstance->name,
                 'username' => $pabxusersinstance->user,
                 'password' => $pabxusersinstance->password,
@@ -175,7 +172,7 @@ class ContentController extends Controller
 
     public function AddUsersToNewServerPJ($serverconn)
     {
-        $pabxusers = PabxUsers::where('pj', 1)->get();
+        $pabxusers = pabxusers::where('pj', 1)->get();
 
         foreach ($pabxusers as $pabxusersinstance) {
 
@@ -186,7 +183,7 @@ class ContentController extends Controller
             } elseif ($pabxusersinstance->acess == 'supervisor') {
                 $pabxusersinstance->acess = 2;
             }
-            $response = Http::post("http://{$serverconn->ipadress}:9000/api/users/", [
+            $response = Http::post($serverconn->apiaddress, [
                 'loginname' => $pabxusersinstance->name,
                 'username' => $pabxusersinstance->user,
                 'password' => $pabxusersinstance->password,
@@ -199,13 +196,13 @@ class ContentController extends Controller
 
     public function AddUsersToNewServerlocalhost($request)
     {
-        $pabxusers = PabxUsers::get();
+        $pabxusers = pabxusers::get();
         foreach ($pabxusers as $pabxuserss) {
 
             DB::disconnect('mysql');
             Config::set("database.connections.dynamic", [
                 'driver' => 'mysql',
-                "host" => $request->ipadress,
+                "host" => $request->apiaddress,
                 'port' => '3306',
                 "database" => $request->databasename,
                 "username" => $request->usernamesql,
@@ -233,7 +230,7 @@ class ContentController extends Controller
             DB::disconnect('mysql');
             Config::set("database.connections.dynamic", [
                 'driver' => 'mysql',
-                "host" => $serverconnection->ipadress,
+                "host" => $serverconnection->apiaddress,
                 'port' => '3306',
                 "database" => $serverconnection->databasename,
                 "username" => $serverconnection->usernamesql,

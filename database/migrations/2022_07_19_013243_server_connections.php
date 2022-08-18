@@ -16,10 +16,8 @@ class ServerConnections extends Migration
         Schema::create('serverconnections', function (Blueprint $table) {
             $table->increments('id');
             $table->string('organization_name');
-            $table->string('usernamesql');
-            $table->string('passwordsql')->nullable();
-            $table->ipAddress('ipadress');
-            $table->string('databasename');       
+            $table->string('token')->nullable();
+            $table->string('apiaddress');
             $table->string('typeofclient');                 
             $table->string('created_by');
             $table->timestamps();
